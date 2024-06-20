@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:toktok_mobile/features/authentication/application/signup/signup_screen.dart';
 import 'package:toktok_mobile/theme/colors.dart';
 
 
 // MARK: 회원 가입 화면 이동 버튼
-Widget navigateToSignUpButton() {
+Widget navigateToSignUpButton(context) {
   return ElevatedButton(
-    onPressed: () {},
+    onPressed: () {
+       Navigator.push(context,
+         MaterialPageRoute(builder: (context) => const SignUpScreen()));
+    },
     style: ElevatedButton.styleFrom(
       backgroundColor: primary,
-      minimumSize: Size(double.infinity, 64),
+      minimumSize: const Size(double.infinity, 58),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -21,16 +25,15 @@ Widget navigateToSignUpButton() {
 }
 
 // MARK: 로그인 화면 이동 버튼
-Widget navigateToLoginButton() {
-  return InkWell(
+Widget navigateToLoginButton(context) {
+  return GestureDetector(
     onTap: () {
-      print('LoginButtonClicked');
     },
-    child: Text(
+    child: const Text(
       '로그인',
       style: TextStyle(
         color: secondary,
-        fontFamily: 'Pretendard-Medium',
+        fontFamily: 'PretendardMedium',
         fontSize: 14,
       ),
     ),
@@ -43,20 +46,21 @@ Widget navigateToLoginText() {
     '이미 계정이 있나요?',
     style: TextStyle(
       color: gray400,
-      fontFamily: 'Pretendard-Light',
+      fontFamily: 'Pretendard',
+      fontWeight: FontWeight.w300,
       fontSize: 14,
     ),
   );
 }
 
 // MARK: 로그인 관련 하단 영역
-Widget navigateToLoginArea() {
+Widget navigateToLoginArea(context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       navigateToLoginText(),
-      SizedBox(width: 8),
-      navigateToLoginButton(),
+      const SizedBox(width: 8),
+      navigateToLoginButton(context),
     ],
   );
 }
@@ -80,7 +84,8 @@ Widget introduceText1() {
     style: TextStyle(
       color: Colors.black,
       fontSize: 18,
-      fontFamily: 'Pretendard-Medium',
+      fontFamily: 'Pretendard',
+      fontWeight: FontWeight.w500,
     ),
   );
 }
@@ -92,7 +97,8 @@ Widget introduceText2() {
     style: TextStyle(
       color: Colors.black,
       fontSize: 18,
-      fontFamily: 'Pretendard-Medium',
+      fontFamily: 'Pretendard',
+      fontWeight: FontWeight.w500,
     ),
   );
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toktok_mobile/features/authentication/application/signUp/widgets/welcome_screen_widget.dart';
+import 'package:toktok_mobile/features/authentication/application/signup/widgets/welcome_screen_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -24,9 +24,9 @@ class WelcomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min, 
                   children: [
-                    navigateToSignUpButton(),
-                    SizedBox(height: 10), // 위젯 사이 10만큼의 여백 
-                    navigateToLoginArea(), 
+                    navigateToSignUpButton(context),
+                    const SizedBox(height: 10), // 위젯 사이 10만큼의 여백 
+                    navigateToLoginArea(context), 
                   ],
                 ),
               ),

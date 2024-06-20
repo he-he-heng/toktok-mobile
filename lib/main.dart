@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toktok_mobile/features/authentication/application/signUp/welcome_screen.dart';
+import 'package:toktok_mobile/features/authentication/application/signup/welcome_screen.dart';
 
 void main() {
   runApp(const MainApp());
