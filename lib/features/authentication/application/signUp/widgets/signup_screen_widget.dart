@@ -1,0 +1,83 @@
+import 'package:flutter/material.dart';
+import 'package:toktok_mobile/features/authentication/application/signup/signup_screen.dart';
+import 'package:toktok_mobile/features/utilities/outlined_textfield.dart';
+import 'package:toktok_mobile/theme/colors.dart';
+
+// MARK: 회원가입 힌트 텍스트
+Widget signUpTextArea() {
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      Text(
+        '만나서 반가워요!\n휴대폰 번호로 가입해주세요',
+        style: TextStyle(
+          fontSize: 24,
+          fontFamily: 'Pretendard',
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    ],
+  );
+}
+
+// 
+Widget navigateToTelVerificationButton(context) {
+  return ElevatedButton(
+    onPressed: () {
+       Navigator.push(context,
+         MaterialPageRoute(builder: (context) =>  SignUpScreen()));
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: gray50,
+      minimumSize: const Size(double.infinity, 58),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+    ),
+    child: const Text(
+      '인증문자 받기',
+      style: TextStyle(color: gray300, fontSize: 18, fontFamily: 'Pretendard', fontWeight: FontWeight.w500),
+    ),
+  );
+}
+
+Widget navigateToTelVerificationHelpText() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Text(
+        '휴대폰 번호가 변경되었나요?',
+        style: TextStyle(
+          fontSize: 14,
+          fontFamily: 'Pretendard',
+          fontWeight: FontWeight.w300,
+          color: gray400,
+        ),
+      ),
+      const SizedBox(width: 3),
+      GestureDetector(
+        child: const Text(
+          '이메일로 계정찾기',
+          style: TextStyle(
+            fontSize: 14,
+            fontFamily: 'Pretendard',
+            fontWeight: FontWeight.w300,
+            decoration: TextDecoration.underline,
+            color: gray400,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget navigateToTelVerificationArea(context) {
+  return Column(
+    children: [
+      navigateToTelVerificationHelpText(),
+      const SizedBox(height: 20),
+      navigateToTelVerificationButton(context)
+    ],
+  );
+}
+

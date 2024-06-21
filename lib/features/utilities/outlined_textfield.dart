@@ -1,40 +1,85 @@
 import 'package:flutter/material.dart';
+import 'package:toktok_mobile/theme/colors.dart';
 
-class OutlinedTextField extends StatelessWidget {
-  final String? setText;
+class OutlinedTextField extends StatefulWidget {
+  final String setText;
+  final String setIntroText;
+  final TextInputType? inputType;
 
   const OutlinedTextField({
-    super.key,
-    required this. setText });
+    Key? key,
+    required this.setText,
+    this.inputType, required FocusNode focusNode, required Color borderColor, 
+    required this.setIntroText,
+  }) : super(key: key);
+
+  @override
+  _OutlinedTextFieldState createState() => _OutlinedTextFieldState();
+}
+
+class _OutlinedTextFieldState extends State<OutlinedTextField> {
+  FocusNode _focusNode = FocusNode();
+  bool _isFocused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(_onFocusChange);
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _onFocusChange() {
+    setState(() {
+      _isFocused = _focusNode.hasFocus;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      child: TextField(
-        keyboardType: TextInputType.number,
-        inputFormatters: const [
-          // Here you can add input formatters to restrict input to numbers only if necessary
-          // 입력 사항을 추가하여 필요한 경우에만 숫자로 입력을 제한할 수 있다
-          // const 지우고 사용할것
-          
-          // 예시: 정규 표현식 한글 & 영어만 받기
-          // FilteringTextInputFormatter(
-          // RegExp('[a-z A-Z ㄱ-ㅎ|가-힣|·|：]'),
-          // allow: true,
-          // )
-        ],
-        decoration: InputDecoration(
-          hintText: setText,
-          hintStyle: TextStyle(color: Colors.white),
-          border: InputBorder.none,
+    Color borderColor = _isFocused ? secondary : gray400;
+
+    return Column(
+      children: [
+        Row(
+          children: [
+            const SizedBox(width: 3),
+            Text(
+              '휴대폰 번호',
+              style: TextStyle(
+                fontSize: 16,
+                fontFamily: 'Pretendard',
+                fontWeight: FontWeight.w400,
+                color: borderColor,
+              ),
+            ),
+          ],
         ),
-        style: TextStyle(color: Colors.white),
-      ),
+        const SizedBox(height: 5),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.0),
+            border: Border.all(color: borderColor),
+          ),
+          child: TextField(
+            focusNode: _focusNode,
+            keyboardType: widget.inputType,
+            decoration: InputDecoration(
+              hintText: widget.setText,
+              hintStyle: TextStyle(color: Colors.grey),
+              border: InputBorder.none,
+            ),
+            style: const TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
     );
   }
 }

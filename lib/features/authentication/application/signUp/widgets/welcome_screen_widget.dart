@@ -8,7 +8,7 @@ Widget navigateToSignUpButton(context) {
   return ElevatedButton(
     onPressed: () {
        Navigator.push(context,
-         MaterialPageRoute(builder: (context) => const SignUpScreen()));
+         MaterialPageRoute(builder: (context) =>  SignUpScreen()));
     },
     style: ElevatedButton.styleFrom(
       backgroundColor: primary,
