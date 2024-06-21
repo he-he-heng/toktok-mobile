@@ -29,17 +29,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
 }
 
 Widget signUpTextArea() {
-  return Container(
-    margin: EdgeInsets.zero,
-    padding: EdgeInsets.zero,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          signUpText1(),
-          signUpText2(),
-        ],
-      ),
-  );
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        signUpText1(),
+        signUpText2(),
+      ],
+    );
 }
 
 Widget signUpText1() {
