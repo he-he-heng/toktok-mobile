@@ -1,9 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:toktok_mobile/features/authentication/application/signup/signup_screen.dart';
+import 'package:toktok_mobile/presentation/screens/signup/signup_screen.dart';
 import 'package:toktok_mobile/theme/colors.dart';
 
+class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
 
-// MARK: 회원 가입 화면 이동 버튼
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.only(left: 16, right: 16),
+          child: Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: introduceArea(),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min, 
+                  children: [
+                    navigateToSignUpButton(context),
+                    const SizedBox(height: 10),
+                    navigateToLoginArea(context), 
+                    const SizedBox(height: 8),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 Widget navigateToSignUpButton(context) {
   return ElevatedButton(
     onPressed: () {
@@ -24,7 +59,6 @@ Widget navigateToSignUpButton(context) {
   );
 }
 
-// MARK: 로그인 화면 이동 버튼
 Widget navigateToLoginButton(context) {
   return GestureDetector(
     onTap: () {
